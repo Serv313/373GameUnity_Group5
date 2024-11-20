@@ -22,13 +22,13 @@ public class PickUpLight : MonoBehaviour
     {
         if (!equipped)
         {
-            lightSwitch.enabled = true;
+            lightSwitch.enabled = false;
             rigidBody.isKinematic = false;
             objectCollider.isTrigger = false;
         }
         if (equipped)
         {
-            lightSwitch.enabled = false;
+            lightSwitch.enabled = true;
             rigidBody.isKinematic = true;
             objectCollider.isTrigger = true;
         }
@@ -56,7 +56,8 @@ public class PickUpLight : MonoBehaviour
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
         //transform.localScale = Vector3.one;
-        
+
+        lightSwitch.enabled = true;
         rigidBody.isKinematic = true;
         objectCollider.isTrigger = true;
     }
@@ -66,7 +67,8 @@ public class PickUpLight : MonoBehaviour
         handFull = false;
         
         transform.SetParent(null);
-        
+
+        lightSwitch.enabled = false;
         rigidBody.isKinematic = false;
         objectCollider.isTrigger = false;
         

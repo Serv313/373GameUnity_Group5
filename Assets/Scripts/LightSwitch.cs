@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class LightSwitch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Light lighting;
+    [SerializeField] private Material emissiveMat;
+
+    private void Awake()
     {
-        
+        emissiveMat.DisableKeyword("_EMISSION");
+        lighting.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            lighting.enabled = !lighting.enabled;
+            if (lighting.enabled)
+            {
+                emissiveMat.EnableKeyword("_EMISSION");
+            }
+            else
+            {
+                emissiveMat.DisableKeyword("_EMISSION");
+            }
+        }
     }
 }
