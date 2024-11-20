@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class PickUpLight : MonoBehaviour
 {
+    [SerializeField] private LightSwitch lightSwitch;
     [SerializeField] private Rigidbody rigidBody;
     [SerializeField] private Collider objectCollider;
     [SerializeField] private Transform player;
@@ -21,11 +22,13 @@ public class PickUp : MonoBehaviour
     {
         if (!equipped)
         {
+            lightSwitch.enabled = true;
             rigidBody.isKinematic = false;
             objectCollider.isTrigger = false;
         }
         if (equipped)
         {
+            lightSwitch.enabled = false;
             rigidBody.isKinematic = true;
             objectCollider.isTrigger = true;
         }
@@ -34,11 +37,11 @@ public class PickUp : MonoBehaviour
     private void Update()
     {
         Vector3 distToPlayer = player.position - transform.position;
-        if (!equipped && distToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !handFull)
+        if(!equipped&& distToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !handFull)
         {
             PickUpObject();
         }
-        if (equipped && Input.GetKeyDown(KeyCode.Q))
+        if(equipped&& Input.GetKeyDown(KeyCode.Q))
         {
             Drop();
         }
@@ -48,12 +51,12 @@ public class PickUp : MonoBehaviour
     {
         equipped = true;
         handFull = true;
-
+        
         transform.SetParent(handContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
         //transform.localScale = Vector3.one;
-
+        
         rigidBody.isKinematic = true;
         objectCollider.isTrigger = true;
     }
@@ -61,12 +64,12 @@ public class PickUp : MonoBehaviour
     {
         equipped = false;
         handFull = false;
-
+        
         transform.SetParent(null);
-
+        
         rigidBody.isKinematic = false;
         objectCollider.isTrigger = false;
-
+        
         rigidBody.velocity = player.GetComponent<CharacterController>().velocity;
 
         rigidBody.AddForce(playerCamera.forward * dropFowardForce, ForceMode.Impulse);
