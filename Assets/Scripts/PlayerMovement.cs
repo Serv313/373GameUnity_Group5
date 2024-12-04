@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        isSwinging = false;
+        isSwinging = false; 
     }
     private void Update()
     {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PickUpLight : MonoBehaviour
 {
@@ -18,6 +19,15 @@ public class PickUpLight : MonoBehaviour
     [SerializeField] private bool equipped;
     [SerializeField] private static bool handFull;
 
+    [SerializeField] private TMP_Text pickUp;
+    [SerializeField] private TMP_Text drop;
+
+
+    private void Awake()
+    {
+        pickUp.enabled = false;
+        drop.enabled = false;
+    }
     private void Start()
     {
         if (!equipped)
@@ -44,6 +54,14 @@ public class PickUpLight : MonoBehaviour
         if(equipped&& Input.GetKeyDown(KeyCode.Q))
         {
             Drop();
+        }
+        if (handFull)
+        {
+            drop.enabled = true;
+        }
+        else
+        {
+            drop.enabled = false;
         }
     }
 
@@ -79,5 +97,21 @@ public class PickUpLight : MonoBehaviour
 
         float random = Random.Range(-1f, 1f);
         rigidBody.AddTorque(new Vector3(random, random, random) * 10);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player"&&!handFull)
+        {
+            pickUp.enabled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            pickUp.enabled = false;
+        }
     }
 }
