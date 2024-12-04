@@ -19,14 +19,18 @@ public class PickUpLight : MonoBehaviour
     [SerializeField] private bool equipped;
     [SerializeField] private static bool handFull;
 
-    [SerializeField] private TMP_Text pickUp;
-    [SerializeField] private TMP_Text drop;
+    [SerializeField] private TMP_Text pickUpText;
+    [SerializeField] private TMP_Text dropText;
+    [SerializeField] private TMP_Text onOffText;
+
+    [SerializeField] private float showTextTime;
 
 
     private void Awake()
     {
-        pickUp.enabled = false;
-        drop.enabled = false;
+        pickUpText.enabled = false;
+        dropText.enabled = false;
+        onOffText.enabled = false;
     }
     private void Start()
     {
@@ -55,21 +59,14 @@ public class PickUpLight : MonoBehaviour
         {
             Drop();
         }
-        if (handFull)
-        {
-            drop.enabled = true;
-        }
-        else
-        {
-            drop.enabled = false;
-        }
     }
 
     private void PickUpObject()
     {
         equipped = true;
         handFull = true;
-        
+        dropText.enabled = true;
+
         transform.SetParent(handContainer);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -78,12 +75,15 @@ public class PickUpLight : MonoBehaviour
         lightSwitch.enabled = true;
         rigidBody.isKinematic = true;
         objectCollider.isTrigger = true;
+
+        StartCoroutine(ShowTextFor(showTextTime));
     }
     private void Drop()
     {
         equipped = false;
         handFull = false;
-        
+        dropText.enabled = false;
+
         transform.SetParent(null);
 
         lightSwitch.enabled = false;
@@ -99,11 +99,20 @@ public class PickUpLight : MonoBehaviour
         rigidBody.AddTorque(new Vector3(random, random, random) * 10);
     }
 
+    private IEnumerator ShowTextFor(float time)
+    {
+        showTextTime = time;
+
+        onOffText.enabled = true;
+        yield return new WaitForSeconds(time);
+        onOffText.enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player"&&!handFull)
         {
-            pickUp.enabled = true;
+            pickUpText.enabled = true;
         }
     }
 
@@ -111,7 +120,7 @@ public class PickUpLight : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            pickUp.enabled = false;
+            pickUpText.enabled = false;
         }
     }
 }

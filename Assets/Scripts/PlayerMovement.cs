@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float sensitivity;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float gravity = -9.0f;
     [SerializeField] private GameObject swing;
     [SerializeField] private GameObject LandingSpot;
 
@@ -19,10 +20,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float cameraMax;
     [SerializeField] private Camera secondCamera;
 
-    private float gravity = -9.0f;
     private float cameraRotaion;
-    [SerializeField] private bool isSwinging;
-    [SerializeField] private bool canSwinging;
+    private bool isSwinging;
+    private bool canSwinging;
     
     private CharacterController playerControler;
 
