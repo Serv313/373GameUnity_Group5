@@ -18,14 +18,13 @@ public class PickUp : MonoBehaviour
     [SerializeField] private bool equipped;
     [SerializeField] private static bool handFull;
 
-    [SerializeField] private TMP_Text pickUp;
-    [SerializeField] private TMP_Text drop;
+    [SerializeField] private TMP_Text pickUpText;
+    [SerializeField] private TMP_Text dropText;
 
 
     private void Awake()
     {
-        pickUp.enabled = false;
-        drop.enabled = false;
+        pickUpText.enabled = false;
     }
 
     private void Start()
@@ -53,20 +52,13 @@ public class PickUp : MonoBehaviour
         {
             Drop();
         }
-        if (handFull)
-        {
-            drop.enabled = true;
-        }
-        else
-        {
-            drop.enabled = false;
-        }
     }
 
     private void PickUpObject()
     {
         equipped = true;
         handFull = true;
+        dropText.enabled = true;
 
         transform.SetParent(handContainer);
         transform.localPosition = Vector3.zero;
@@ -80,6 +72,7 @@ public class PickUp : MonoBehaviour
     {
         equipped = false;
         handFull = false;
+        dropText.enabled = false;
 
         transform.SetParent(null);
 
@@ -99,7 +92,7 @@ public class PickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Player" && !handFull)
         {
-            pickUp.enabled = true;
+            pickUpText.enabled = true;
         }
     }
 
@@ -107,7 +100,7 @@ public class PickUp : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            pickUp.enabled = false;
+            pickUpText.enabled = false;
         }
     }
 }
