@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float sensitivity;
     [SerializeField] private float jumpForce;
     [SerializeField] private float gravity = -9.0f;
+    private bool disable;
+    [SerializeField] private Transform Player;
     [SerializeField] private GameObject swing;
     [SerializeField] private GameObject LandingSpot;
     [SerializeField] private TMP_Text swingText;
@@ -22,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     [Tooltip("Must be a positive number")]
     [SerializeField] private float cameraMax;
     [SerializeField] private Camera secondCamera;
+
+    [Header("Respawn")]
+    [SerializeField] private List<GameObject> spawnPoint;
+    private Vector3 _spawnPoint;
+    private bool reset;
 
     private float cameraRotaion;
     private bool isSwinging;
@@ -37,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
     {
         playerControler = GetComponent<CharacterController>();
         swingText.enabled = false;
+        reset = false;
+        disable = false;
     }
     private void Start()
     {
@@ -54,10 +63,15 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerSwing();
         }
-        else
+        else if(!disable)
         {
             PlayerMove();
             PlayerCameraMove();
+        }
+
+        if (reset)
+        {
+            StartCoroutine("ReSpawn");
         }
     }
     private void PlayerMove()
@@ -125,6 +139,14 @@ public class PlayerMovement : MonoBehaviour
         {
             swingText.enabled = true;
         }
+        if (other.gameObject.tag == "Spawnpoint")
+        {
+            _spawnPoint = Player.transform.position;
+        }
+        if (other.gameObject.tag == "DeathFloor")
+        {
+            reset = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -136,5 +158,15 @@ public class PlayerMovement : MonoBehaviour
         {
             swingText.enabled = false;
         }
+    }
+
+    IEnumerator ReSpawn()
+    {
+        disable = true;
+        yield return new WaitForSeconds(0.06f);
+        Player.transform.position = _spawnPoint;
+        yield return new WaitForSeconds(0.06f);
+        disable = false;
+        reset = false;
     }
 }
