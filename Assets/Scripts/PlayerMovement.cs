@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.0f;
     [SerializeField] private GameObject swing;
     [SerializeField] private GameObject LandingSpot;
+    [SerializeField] private TMP_Text swingText;
+    [SerializeField] private GameObject swingSpot;
 
     [Header("Camera Settings")]
     [SerializeField] private Camera playerCamera;
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerControler = GetComponent<CharacterController>();
+        swingText.enabled = false;
     }
     private void Start()
     {
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         if (canSwinging && Input.GetKeyDown(KeyCode.F))
         {
             isSwinging = true;
+            Destroy(swingSpot);
         }
         if(isSwinging)
         {
@@ -116,12 +121,20 @@ public class PlayerMovement : MonoBehaviour
         {
             canSwinging = true;
         }
+        if (other.gameObject.tag == "SwingSpot")
+        {
+            swingText.enabled = true;
+        }
     }
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Swing")
         {
             canSwinging = false;
+        }
+        if (other.gameObject.tag == "SwingSpot")
+        {
+            swingText.enabled = false;
         }
     }
 }

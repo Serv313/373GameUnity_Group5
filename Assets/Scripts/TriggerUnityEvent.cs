@@ -20,7 +20,7 @@ public class TriggerUnityEvent : MonoBehaviour
     private bool _exitTriggered;
 
     [SerializeField] private TMP_Text openText;
-    private bool canOpen = false;
+    [SerializeField]private bool canOpen = false;
 
     private void Awake()
     {
@@ -34,6 +34,7 @@ public class TriggerUnityEvent : MonoBehaviour
         {
             executeOnEnter?.Invoke();
             _enterTriggered = true;
+            openText.enabled = false;
         }
     }
 
@@ -52,7 +53,6 @@ public class TriggerUnityEvent : MonoBehaviour
             canOpen = true;
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (triggerExitOnlyOnce && _exitTriggered) return;
@@ -65,6 +65,7 @@ public class TriggerUnityEvent : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             openText.enabled = false;
+            canOpen = false;
         }
     }
 }
