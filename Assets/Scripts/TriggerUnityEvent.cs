@@ -20,10 +20,21 @@ public class TriggerUnityEvent : MonoBehaviour
     private bool _exitTriggered;
 
     [SerializeField] private TMP_Text openText;
+    private bool canOpen = false;
 
     private void Awake()
     {
         openText.enabled = false;
+        canOpen = false;
+    }
+
+    private void Update()
+    {
+        if (canOpen && Input.GetKeyDown(KeyCode.E))
+        {
+            executeOnEnter?.Invoke();
+            _enterTriggered = true;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,12 +43,13 @@ public class TriggerUnityEvent : MonoBehaviour
 
         if (!other.CompareTag(triggerTag)) return;
         
-        executeOnEnter?.Invoke();
-        _enterTriggered = true;
+        //executeOnEnter?.Invoke();
+        //_enterTriggered = true;
 
         if (other.gameObject.tag == "Player")
         {
             openText.enabled = true;
+            canOpen = true;
         }
     }
 
