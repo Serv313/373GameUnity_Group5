@@ -391,7 +391,6 @@ namespace WaterSystem
             byte[] image = tex2D.EncodeToPNG();
             System.IO.File.WriteAllBytes(Application.dataPath + "/WaterDepth.png", image);
             #endif*/
-
             _depthCam.enabled = false;
             _depthCam.targetTexture = null;
         }
