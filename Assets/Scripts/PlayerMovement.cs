@@ -46,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         swingText.enabled = false;
         reset = false;
         disable = false;
+        playerCamera.transform.rotation = Quaternion.identity;
     }
     private void Start()
     {
