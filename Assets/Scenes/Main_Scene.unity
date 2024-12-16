@@ -712,7 +712,6 @@ MonoBehaviour:
   triggerExitOnlyOnce: 0
   openText: {fileID: 379988935}
   canOpen: 0
-  sphereCollider: {fileID: 143769467}
 --- !u!135 &143769467
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3145,44 +3144,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450696345}
   m_Mesh: {fileID: 28560070845925214, guid: b4ae9472cdaa52248a8a760cacb6e532, type: 3}
---- !u!84 &479756678
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: WaterDepthMap
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  m_IsAlphaChannelOptional: 0
-  serializedVersion: 5
-  m_Width: 1024
-  m_Height: 1024
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthStencilFormat: 94
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_EnableRandomWrite: 0
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
-  m_ShadowSamplingMode: 2
 --- !u!1 &520931718
 GameObject:
   m_ObjectHideFlags: 0
@@ -4828,7 +4789,7 @@ Transform:
   m_GameObject: {fileID: 729670376}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.55, y: 0, z: 0}
+  m_LocalPosition: {x: -0.55, y: 0.07699614, z: 0}
   m_LocalScale: {x: 0.19100107, y: 1.0851479, z: 0.19100107}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6046,7 +6007,7 @@ Transform:
   m_GameObject: {fileID: 943262816}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.28, y: 25.32, z: 110.92}
+  m_LocalPosition: {x: 2.68, y: 25.32, z: 91.46}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13880,7 +13841,6 @@ MonoBehaviour:
   triggerExitOnlyOnce: 0
   openText: {fileID: 379988935}
   canOpen: 0
-  sphereCollider: {fileID: 1380980933}
 --- !u!135 &1380980933
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13985,6 +13945,44 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1384164258}
   m_Mesh: {fileID: 6329158148709259305, guid: 725af361858b26945ae4b03b8591e5b1, type: 3}
+--- !u!84 &1395196502
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterDepthMap
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_IsAlphaChannelOptional: 0
+  serializedVersion: 5
+  m_Width: 1024
+  m_Height: 1024
+  m_AntiAliasing: 1
+  m_MipCount: -1
+  m_DepthStencilFormat: 94
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_EnableRandomWrite: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
+  m_ShadowSamplingMode: 2
 --- !u!1 &1429800073
 GameObject:
   m_ObjectHideFlags: 0
@@ -21459,7 +21457,7 @@ Transform:
   m_GameObject: {fileID: 1733121610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.1, y: 0, z: 0}
+  m_LocalPosition: {x: -1.1, y: 0.077, z: 0}
   m_LocalScale: {x: 0.19100107, y: 1.0851479, z: 0.19100107}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24767,7 +24765,7 @@ Transform:
   m_GameObject: {fileID: 4652854095723916200}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.55, y: 0, z: 0}
+  m_LocalPosition: {x: 0.55, y: 0.07699717, z: 0}
   m_LocalScale: {x: 0.19100107, y: 1.0851479, z: 0.19100107}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28232,7 +28230,7 @@ Transform:
   m_GameObject: {fileID: 3331500355653004911}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 4.238, y: 25.579, z: 117.478}
+  m_LocalPosition: {x: 4.2, y: 25.579, z: 118.686}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -29388,7 +29386,7 @@ PrefabInstance:
     - target: {fileID: 1671025980924192543, guid: 10b04b9e3244f6047b4d5fe4249c2200,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.27
+      value: 17.43
       objectReference: {fileID: 0}
     - target: {fileID: 1671025980924192543, guid: 10b04b9e3244f6047b4d5fe4249c2200,
         type: 3}
@@ -30419,7 +30417,7 @@ Transform:
   m_GameObject: {fileID: 6884446180238738400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.07699614, z: 0}
   m_LocalScale: {x: 0.19100107, y: 1.0851479, z: 0.19100107}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30535,13 +30533,36 @@ GameObject:
   - component: {fileID: 7464273273336928621}
   - component: {fileID: 7553503002488649767}
   - component: {fileID: 6677036772181115212}
+  - component: {fileID: 9079549964230623464}
   m_Layer: 0
   m_Name: Dock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
+--- !u!64 &9079549964230623464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079549964230623463}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 602267329910272630, guid: eac141083be78a844a78737a2e2eb3ce, type: 3}
 --- !u!4 &9081003901714411566
 Transform:
   m_ObjectHideFlags: 0

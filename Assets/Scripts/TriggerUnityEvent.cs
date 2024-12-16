@@ -21,7 +21,6 @@ public class TriggerUnityEvent : MonoBehaviour
 
     [SerializeField] private TMP_Text openText;
     [SerializeField] private bool canOpen = false;
-    [SerializeField] private SphereCollider sphereCollider;
 
     private void Awake()
     {
@@ -52,22 +51,21 @@ public class TriggerUnityEvent : MonoBehaviour
         {
             openText.enabled = true;
             canOpen = true;
-            sphereCollider.enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)
     {
+        if (other.gameObject.tag == "Player")
+        {
+            openText.enabled = false;
+            canOpen = false;
+        }
+
         if (triggerExitOnlyOnce && _exitTriggered) return;
 
         if (!other.CompareTag(triggerTag)) return;
 
         executeOnExit?.Invoke();
         _exitTriggered = true;
-
-        if (other.gameObject.tag == "Player")
-        {
-            openText.enabled = false;
-            canOpen = false;
-        }
     }
 }
