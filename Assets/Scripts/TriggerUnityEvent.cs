@@ -20,7 +20,8 @@ public class TriggerUnityEvent : MonoBehaviour
     private bool _exitTriggered;
 
     [SerializeField] private TMP_Text openText;
-    [SerializeField]private bool canOpen = false;
+    [SerializeField] private bool canOpen = false;
+    [SerializeField] private SphereCollider sphereCollider;
 
     private void Awake()
     {
@@ -51,6 +52,7 @@ public class TriggerUnityEvent : MonoBehaviour
         {
             openText.enabled = true;
             canOpen = true;
+            sphereCollider.enabled = false;
         }
     }
     private void OnTriggerExit(Collider other)

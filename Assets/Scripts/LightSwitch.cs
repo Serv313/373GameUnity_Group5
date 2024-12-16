@@ -5,11 +5,11 @@ using UnityEngine;
 public class LightSwitch : MonoBehaviour
 {
     [SerializeField] private Light lighting;
-    [SerializeField] private Material emissiveMat;
+    [SerializeField] private AudioSource lightClick;
 
     private void Awake()
     {
-        emissiveMat.DisableKeyword("_EMISSION");
+        //emissiveMat.DisableKeyword("_EMISSION");
         lighting.enabled = false;
     }
 
@@ -18,6 +18,8 @@ public class LightSwitch : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             lighting.enabled = !lighting.enabled;
+            lightClick.Play();
+            /*
             if (lighting.enabled)
             {
                 emissiveMat.EnableKeyword("_EMISSION");
@@ -26,6 +28,7 @@ public class LightSwitch : MonoBehaviour
             {
                 emissiveMat.DisableKeyword("_EMISSION");
             }
+            */
         }
     }
 }
